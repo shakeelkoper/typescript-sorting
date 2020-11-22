@@ -1,19 +1,23 @@
-class Sorter {
-	constructor(public collection: number[]) {}
-	sort(): void {
-		const { length } = this.collection;
-		for (let i = 0; i < length; i++) {
-			for (let j = 0; j < length - i - 1; j++) {
-				if (this.collection[j] > this.collection[j + 1]) {
-					const leftHand = this.collection[j];
-					this.collection[j] = this.collection[j + 1];
-					this.collection[j + 1] = leftHand;
-				}
-			}
-		}
-	}
-}
+import { Sorter } from "./Sorter";
+import { NumbersCollection } from "./NumbersCollection";
+import { CharactersCollection } from "./CharactersCollection";
+import { LinkedList } from "./Linkedlist";
 
-const sorter = new Sorter([10, 3, -5, 0]);
-sorter.sort();
-console.log(sorter.collection);
+const numbersCollection = new NumbersCollection([10, 3, -5, 0]);
+const sortNumbers = new Sorter(numbersCollection);
+sortNumbers.sort();
+console.log(numbersCollection.data);
+
+const charactersCollection = new CharactersCollection("Xaaa");
+const sortCharacters = new Sorter(charactersCollection);
+sortCharacters.sort();
+console.log(charactersCollection.data);
+
+const linkedList = new LinkedList();
+linkedList.add(500);
+linkedList.add(-10);
+linkedList.add(-3);
+linkedList.add(4);
+const sortLinkedList = new Sorter(linkedList);
+sortLinkedList.sort();
+linkedList.print();
